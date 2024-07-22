@@ -1,6 +1,7 @@
 package br.com.herick.curso_jsf_e_primefaces_essencial.model;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -12,64 +13,51 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "empresa")
-@NamedQuery(name = "findAllEmpresas", query = "SELECT e FROM Empresa e")
 public class Empresa implements Serializable {
 
-	private static final long serialVersionUID = -6954210074334156880L;
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-
+	
 	@Column(name = "nome_fantasia", nullable = false, length = 80)
 	private String nomeFantasia;
-
-	@Column(name = "razao_social")
+	
+	@Column(name = "razao_social", nullable = false, length = 120)
 	private String razaoSocial;
-
+	
 	@Column(nullable = false, length = 18)
 	private String cnpj;
-
+	
 	@Temporal(TemporalType.DATE)
 	@Column(name = "data_fundacao")
 	private Date dataFundacao;
-
+	
 	@ManyToOne
 	@JoinColumn(name = "ramo_atividade_id", nullable = false)
 	private RamoAtividade ramoAtividade;
-
+	
 	@Enumerated(EnumType.STRING)
-	@Column(name="tipo", nullable = false, length = 30)
+	@Column(nullable = false, length = 30)
 	private TipoEmpresa tipo;
-
-	public Empresa() {
-	 //none
-	}
-
-	public Empresa(String nomeFantasia, String razaoSocial, String cnpj, Date dataFundacao, RamoAtividade ramoAtividade,
-			TipoEmpresa tipo) {
-		this.nomeFantasia = nomeFantasia;
-		this.razaoSocial = razaoSocial;
-		this.cnpj = cnpj;
-		this.dataFundacao = dataFundacao;
-		this.ramoAtividade = ramoAtividade;
-		this.tipo = tipo;
-	}
-
-	public TipoEmpresa getTipo() {
-		return tipo;
-	}
-
-	public void setTipo(TipoEmpresa tipo) {
-		this.tipo = tipo;
-	}
+	
+	@Column(precision = 10, scale = 2)
+	private BigDecimal faturamento;
+	
+	public BigDecimal getFaturamento() {
+        return faturamento;
+    }
+	
+	public void setFaturamento(BigDecimal faturamento) {
+        this.faturamento = faturamento;
+    }
 
 	public Long getId() {
 		return id;
@@ -119,6 +107,14 @@ public class Empresa implements Serializable {
 		this.ramoAtividade = ramoAtividade;
 	}
 
+	public TipoEmpresa getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(TipoEmpresa tipo) {
+		this.tipo = tipo;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -146,9 +142,6 @@ public class Empresa implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Empresa [id=" + id + ", nomeFantasia=" + nomeFantasia + ", razaoSocial=" + razaoSocial + ", cnpj="
-				+ cnpj + ", dataFundacao=" + dataFundacao + ", ramoAtividade=" + ramoAtividade + ", tipo="
-				+ tipo + "]";
-	}
-
+		return "Empresa [id=" + id + "]";
+	}	
 }
