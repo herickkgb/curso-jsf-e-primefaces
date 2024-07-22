@@ -7,18 +7,16 @@ import javax.persistence.Persistence;
 import br.com.herick.curso_jsf_e_primefaces_essencial.model.Empresa;
 
 public class SchemaGeneration {
-	public static void main(String[] args) {
-//		EntityManagerFactory emf = Persistence.createEntityManagerFactory("AlgaworksPU");
-//		EntityManager em = emf.createEntityManager();
-//
-//		// Use createNamedQuery with the name defined in the @NamedQuery annotation
-//		List<Empresa> lista = em.createNamedQuery("findAllEmpresas", Empresa.class).getResultList();
-//
-//		for (Empresa listAux : lista) {
-//			System.out.println(listAux);
-//		}
-//
-//		em.close();
-//		emf.close();
-	}
+		public static void main(String[] args) {
+	        EntityManagerFactory emf = Persistence.createEntityManagerFactory("AlgaWorksPU");
+
+	        EntityManager em = emf.createEntityManager();
+
+	        List<Empresa> lista = em.createQuery("from Empresa", Empresa.class).getResultList();
+
+	        System.out.println(lista);
+
+	        em.close();
+	        emf.close();
+	    }
 }

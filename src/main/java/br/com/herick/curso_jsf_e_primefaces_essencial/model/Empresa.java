@@ -47,28 +47,28 @@ public class Empresa implements Serializable {
 
 	@Enumerated(EnumType.STRING)
 	@Column(name="tipo", nullable = false, length = 30)
-	private TipoEmpresa tipoEmpresa;
+	private TipoEmpresa tipo;
 
 	public Empresa() {
 	 //none
 	}
 
 	public Empresa(String nomeFantasia, String razaoSocial, String cnpj, Date dataFundacao, RamoAtividade ramoAtividade,
-			TipoEmpresa tipoEmpresa) {
+			TipoEmpresa tipo) {
 		this.nomeFantasia = nomeFantasia;
 		this.razaoSocial = razaoSocial;
 		this.cnpj = cnpj;
 		this.dataFundacao = dataFundacao;
 		this.ramoAtividade = ramoAtividade;
-		this.tipoEmpresa = tipoEmpresa;
+		this.tipo = tipo;
 	}
 
-	public TipoEmpresa getTipoEmpresa() {
-		return tipoEmpresa;
+	public TipoEmpresa getTipo() {
+		return tipo;
 	}
 
-	public void setTipoEmpresa(TipoEmpresa tipoEmpresa) {
-		this.tipoEmpresa = tipoEmpresa;
+	public void setTipo(TipoEmpresa tipo) {
+		this.tipo = tipo;
 	}
 
 	public Long getId() {
@@ -147,8 +147,8 @@ public class Empresa implements Serializable {
 	@Override
 	public String toString() {
 		return "Empresa [id=" + id + ", nomeFantasia=" + nomeFantasia + ", razaoSocial=" + razaoSocial + ", cnpj="
-				+ cnpj + ", dataFundacao=" + dataFundacao + ", ramoAtividade=" + ramoAtividade + ", tipoEmpresa="
-				+ tipoEmpresa + "]";
+				+ cnpj + ", dataFundacao=" + dataFundacao + ", ramoAtividade=" + ramoAtividade + ", tipo="
+				+ tipo + "]";
 	}
 
 }

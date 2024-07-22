@@ -45,6 +45,10 @@ public class Empresas implements Serializable {
 		this.manager.remove(empresa);
 	}
 
+	public List<Empresa> todas() {
+		return manager.createQuery("from Empresa", Empresa.class).getResultList();
+	}
+
 	public EntityManager getEntityManager() {
 		return manager;
 	}

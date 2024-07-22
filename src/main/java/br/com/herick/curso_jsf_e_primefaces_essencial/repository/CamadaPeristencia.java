@@ -33,7 +33,7 @@ public class CamadaPeristencia {
 		empresa.setNomeFantasia("Herick Alves");
 		empresa.setCnpj("13.821.817/0001-46");
 		empresa.setRazaoSocial("Herick Alves 13.821.817/0001-46");
-		empresa.setTipoEmpresa(TipoEmpresa.MEI);
+		empresa.setTipo(TipoEmpresa.MEI);
 		empresa.setDataFundacao(new Date());
 		empresa.setRamoAtividade(listaDeRamoAtividades.get(0));
 
@@ -45,7 +45,6 @@ public class CamadaPeristencia {
 		// Verificando se a inserção funcionou
 		List<Empresa> listaEmpresa2 = empresas.pesquisar("");
 		System.out.println(listaEmpresa2);
-		
 		
 		em.close();
 		emf.close();
