@@ -21,26 +21,34 @@
 	</header>
 	<H2>Cadastro de Empresas</H2>
 	<div id="conteudo">
-		<p:dataTable value="#{gestaoEmpresasBean.listaEmpresas}" var="empresa" paginator="true" rows="10" paginatorPosition="bottom" 
-			emptyMessage="Nenhuma informação a ser exibida...">
+		<h:form>
 
-			<p:column headerText="Razão social">
-				<h:outputText value="#{empresa.razaoSocial}" />
-			</p:column>
+			<p:dataTable value="#{gestaoEmpresasBean.listaEmpresas}"
+				var="empresa" paginator="true" rows="10" paginatorPosition="bottom"
+				emptyMessage="Nenhuma informação a ser exibida...">
 
-			<p:column headerText="Nome fantasia">
-				<h:outputText value="#{empresa.nomeFantasia}" />
-			</p:column>
+				<p:column headerText="Razão social" sortBy="#{empresa.razaoSocial}">
+					<h:outputText value="#{empresa.razaoSocial}" />
+				</p:column>
 
-			<p:column headerText="Tipo emrpesa">
-				<h:outputText value="#{empresa.tipo}" />
-			</p:column>
+				<p:column headerText="Nome fantasia"
+					sortBy="#{empresa.nomeFantasia}">
+					<h:outputText value="#{empresa.nomeFantasia}" />
+				</p:column>
 
-			<p:column headerText="Ramo atividade">
-				<h:outputText value="#{empresa.ramoAtividade.descricao}" />
-			</p:column>
-		</p:dataTable>
+				<p:column headerText="Tipo empresa" sortBy="#{empresa.tipo}">
+					<h:outputText value="#{empresa.tipo}" />
+				</p:column>
+
+				<p:column headerText="Ramo atividade"
+					sortBy="#{empresa.ramoAtividade.descricao}">
+					<h:outputText value="#{empresa.ramoAtividade.descricao}" />
+				</p:column>
+			</p:dataTable>
+
+		</h:form>
 	</div>
+
 </h:body>
 
 </html>
