@@ -23,7 +23,7 @@
 						class="ui-icon ui-icon-grip-dotted-vertical" />
 					</span>
 
-					<p:commandButton value="Nova" icon=" fa fa-plus" />
+					<p:commandButton value="Nova" icon=" fa fa-plus" onclick="PF('empresaDialogWidgetVar').show()"/>
 
 					<span class="ui-separator"> <span
 						class="ui-icon ui-icon-grip-dotted-vertical" />
@@ -64,5 +64,9 @@
 				</p:column>
 			</p:dataTable>
 		</h:form>
+		
+		<p:dialog header="Nova enpresa" widgetVar="empresaDialogWidgetVar">
+			<p:commandButton  value="Teste"/>
+		</p:dialog>
 	</ui:define>
 </ui:composition>
