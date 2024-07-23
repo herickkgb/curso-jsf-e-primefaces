@@ -9,6 +9,7 @@ import javax.inject.Named;
 
 import br.com.herick.curso_jsf_e_primefaces_essencial.model.Empresa;
 import br.com.herick.curso_jsf_e_primefaces_essencial.repository.Empresas;
+import br.com.herick.curso_jsf_e_primefaces_essencial.util.FacesMessages;
 
 @Named
 @ViewScoped
@@ -18,16 +19,35 @@ public class GestaoEmpresasBean implements Serializable {
     
     @Inject
     private Empresas empresas;
-
+    
+    @Inject
+    private FacesMessages messages;
+    
     private List<Empresa> listaEmpresas;
     
-    public List<Empresa> todasEmpresas(){
-    	this.listaEmpresas = empresas.todas();
-    	return this.listaEmpresas;
+    private String termoPesquisa;
+    
+    public void pesquisar() {
+        listaEmpresas = empresas.pesquisar(termoPesquisa);
+        
+        if (listaEmpresas.isEmpty()) {
+            messages.info("Sua consulta não retornou registros.");
+        }
+    }
+    
+    public void todasEmpresas() {
+        listaEmpresas = empresas.todas();
     }
     
     public List<Empresa> getListaEmpresas() {
-		return this.listaEmpresas;
-	}
-   
+        return listaEmpresas;
+    }
+    
+    public String getTermoPesquisa() {
+        return termoPesquisa;
+    }
+    
+    public void setTermoPesquisa(String termoPesquisa) {
+        this.termoPesquisa = termoPesquisa;
+    }
 }
