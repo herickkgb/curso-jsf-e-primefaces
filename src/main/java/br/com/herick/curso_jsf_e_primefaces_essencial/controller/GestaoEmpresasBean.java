@@ -8,6 +8,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import br.com.herick.curso_jsf_e_primefaces_essencial.model.Empresa;
+import br.com.herick.curso_jsf_e_primefaces_essencial.model.TipoEmpresa;
 import br.com.herick.curso_jsf_e_primefaces_essencial.repository.Empresas;
 import br.com.herick.curso_jsf_e_primefaces_essencial.util.FacesMessages;
 
@@ -49,5 +50,9 @@ public class GestaoEmpresasBean implements Serializable {
     
     public void setTermoPesquisa(String termoPesquisa) {
         this.termoPesquisa = termoPesquisa;
+    }
+    
+    public TipoEmpresa[] getTiposEmpresa() {
+        return TipoEmpresa.values();
     }
 }
